@@ -1,11 +1,11 @@
-## Mix Cache
+## Mix Helper
 
 ...
 
 ## Usage
 
 ```
-composer require mix/cache
+composer require mix/helper
 ```
 
 ## License
