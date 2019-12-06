@@ -19,8 +19,8 @@ class ProcessHelper
      */
     public static function daemon(bool $noclose = false, bool $nochdir = true)
     {
-        if (PhpHelper::isMac()) {
-            throw new \Swoole\Exception('MacOS unsupport fork in Swoole\Coroutine\Scheduler, please use [nohup command arg... &] instead.');
+        if (PhpHelper::isMac() && \Swoole\Coroutine::getCid() > -1) {
+            throw new \Swoole\Exception('MacOS unsupport fork in coroutine, please use it before the Swoole\Coroutine\Scheduler start.');
         }
         return \Swoole\Process::daemon($nochdir, $noclose);
     }
