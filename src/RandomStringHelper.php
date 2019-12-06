@@ -9,7 +9,11 @@ namespace Mix\Helper;
 class RandomStringHelper
 {
 
-    // 获取随机字符
+    /**
+     * 获取随机字符
+     * @param $length
+     * @return string
+     */
     public static function randomAlphanumeric($length)
     {
         $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
@@ -21,7 +25,11 @@ class RandomStringHelper
         return $str;
     }
 
-    // 获取随机字符
+    /**
+     * 获取随机数字
+     * @param $length
+     * @return string
+     */
     public static function randomNumeric($length)
     {
         $chars = '1234567890';

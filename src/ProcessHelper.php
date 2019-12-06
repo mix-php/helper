@@ -13,11 +13,16 @@ class ProcessHelper
 
     /**
      * 使当前进程蜕变为一个守护进程
-     * @param bool $close
+     * @param bool $noclose
+     * @param bool $nochdir
+     * @return bool
      */
-    public static function daemon($ioclose = true)
+    public static function daemon(bool $noclose = false, bool $nochdir = true)
     {
-        return \Swoole\Process::daemon(true, !$ioclose);
+        if (PhpHelper::isMac()) {
+            throw new \Swoole\Exception('Mac OS unsupport fork in Scheduler, please use [nohup command arg... &] instead.');
+        }
+        return \Swoole\Process::daemon($nochdir, $noclose);
     }
 
     /**
